@@ -70,9 +70,8 @@ server.get('/callback', (req, res) => {
             expires_in: response.data.expires_in
         });
 
-        res.send(params);
 
-        // res.redirect(`http://localhost:8080/setup?${params}`);
+        res.redirect(`http://localhost:8080/me?${params}`);
     })
     .catch(err => {
         res.send(err);
