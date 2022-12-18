@@ -16,6 +16,14 @@ let spotify = {
     },
 
     logout(){
+        if(localStorage.getItem('accessToken')){
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('expiresIn');
+        }
+        
+        window.location.reload();
+
         console.log('Logged out');
     }
 }
