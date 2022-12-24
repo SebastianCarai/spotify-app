@@ -1,12 +1,18 @@
 <template>
     <div class="side_nav">
-        Side Nav
+        <TopPart />
+        <hr>
+        <Playlists />
     </div>
 </template>
 
 <script>
+import TopPart from './side-nav/TopPart.vue';
+import Playlists from './side-nav/Playlists.vue';
+
 export default {
-    name: 'SideNav'
+    name: 'SideNav',
+    components:{TopPart, Playlists}
 }
 </script>
 
@@ -14,5 +20,6 @@ export default {
 .side_nav{
     background-color: #000000;
     height: inherit;
+    padding: 20px;
 }
 </style>
