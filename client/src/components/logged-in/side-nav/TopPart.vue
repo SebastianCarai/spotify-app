@@ -92,4 +92,7 @@ ul{
         }
     }
 }
+.bottom-part{
+    margin-top: 35px;
+}
 </style>

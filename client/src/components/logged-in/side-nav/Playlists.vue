@@ -54,12 +54,46 @@ export default {
                 })
                 .then(res => {
                     clickedPlaylist['songs'] = res.data.items;
+                    let msDuration = null;
+                    clickedPlaylist.songs.forEach(song => {
+                        song['duration'] = this.convertMsToTime(song.track.duration_ms)
+                        msDuration += song.track.duration_ms
+                    });
+                    clickedPlaylist['duration'] = this.convertMsToTime(msDuration);
+                    
                     this.$store.commit('setActivePlaylist', clickedPlaylist)
                 })
             } else {
                 this.$store.commit('setActivePlaylist', clickedPlaylist)
             }
             window.scrollTo(0,0);
+        },
+        convertMsToTime(milliseconds) {
+            let seconds = Math.floor(milliseconds / 1000);
+            let minutes = Math.floor(seconds / 60);
+            let hours = Math.floor(minutes / 60);
+
+            seconds = seconds % 60;
+            minutes = minutes % 60;
+
+            return `${hours}hr ${minutes}min`;
+        },
+        convertMsToTime(milliseconds) {
+            let seconds = Math.floor(milliseconds / 1000);
+            let minutes = Math.floor(seconds / 60);
+            let hours = Math.floor(minutes / 60);
+
+            seconds = seconds % 60;
+            if (seconds < 10){
+                seconds = '0'+seconds
+            }
+            minutes = minutes % 60;
+
+            if(hours !== 0){
+                return `${hours}hr ${minutes}min`;
+            } else{
+                return `${minutes}:${seconds}`;
+            }
         }
     },
     created(){
