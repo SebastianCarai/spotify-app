@@ -34,6 +34,7 @@ server.get('/login', (req, res) => {
             client_id: client_id,
             redirect_uri: redirect_uri,
             state: generateRandomString(16),
+            scope:'playlist-read-private',
             response_type: 'code'
         }
     );
@@ -69,7 +70,6 @@ server.get('/callback', (req, res) => {
             refresh_token: response.data.refresh_token,
             expires_in: response.data.expires_in
         });
-
 
         res.redirect(`http://localhost:8080/me?${params}`);
     })

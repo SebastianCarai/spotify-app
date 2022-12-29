@@ -3,7 +3,7 @@
         <!-- | Home - Search - Your Library | -->
         <ul>
             <!-- Home -->
-            <li class="top-cta cta">
+            <li class="top-cta cta" @click="goToHome">
                 <i class="fa-solid fa-house"></i> Home
             </li>
             <!-- Search -->
@@ -36,7 +36,12 @@
 
 <script>
 export default {
-    name: 'TopPart'
+    name: 'TopPart',
+    methods: {
+        goToHome(){
+            this.$store.commit('setActivePlaylist', null)
+        }
+    }
 }
 </script>
 
@@ -86,9 +91,5 @@ ul{
             font-size: 15px;
         }
     }
-}
-
-.bottom-part{
-        margin-top: 35px;
 }
 </style>

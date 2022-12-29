@@ -1,3 +1,5 @@
+import axios from "axios";
+
 let spotify = {
     login(){
         // Save URL Parameters to variables
@@ -12,6 +14,7 @@ let spotify = {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
             localStorage.setItem('expiresIn', expiresIn);
+            localStorage.setItem('timestamp', Date.now());
         }
     },
 
